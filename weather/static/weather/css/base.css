@@ -10,8 +10,6 @@
 
 
 body {
-    background: #F1C40F;
-    background-attachment: fixed;
     background-size: cover;
     font-family: sans-serif;
 }
@@ -46,16 +44,14 @@ h1 {
 
 
 #searchBar {
-    border: #BA4A00 solid;
-    border-width: .2em;
+    border: .2em solid #BA4A00;
     border-radius: .7em 0 0 .7em;
     padding: .2em .2em .2em .5em;
     width: 225px;
 }
 
 #searchBtn {
-    border: #BA4A00 solid;
-    border-width: .2em;
+    border: .2em solid #BA4A00;
     border-radius: .7em .7em .7em .7em;
     background-color: #BA4A00;
     color: white;
@@ -120,7 +116,6 @@ h1 {
 
 .weather-bottom {
     text-align: center;
-    margin-top: 2em;
 }
 
 .weather-bottom ul li {
@@ -132,7 +127,7 @@ h1 {
 
 .weather-bottom ul li.bg {
     background: #314277;
-    margin-left: 28px;
+    margin-left: 20px;
     margin-bottom: 22px;
 }
 
