@@ -1,0 +1,160 @@
+
+
+/* MAIN
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    background: #F1C40F;
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: sans-serif;
+}
+
+h1 {
+    font-size: 3em;
+    text-align: Center;
+    color: #000;
+    font-weight: 300;
+    font-family: sans-serif;
+}
+
+.main_page {
+    padding: 180px;
+}
+
+.main_page h1 {
+    text-align: Center;
+    margin-bottom: 40px;
+
+}
+
+#searchBarWrap {
+    display: flex;
+    justify-content: center;
+}
+
+#searchBarWrap {
+    display: flex;
+    justify-content: center;
+}
+
+
+#searchBar {
+    border: #BA4A00 solid;
+    border-width: .2em;
+    border-radius: .7em 0 0 .7em;
+    padding: .2em .2em .2em .5em;
+    width: 225px;
+}
+
+#searchBtn {
+    border: #BA4A00 solid;
+    border-width: .2em;
+    border-radius: .7em .7em .7em .7em;
+    background-color: #BA4A00;
+    color: white;
+    font-weight: bold;
+    padding-bottom: .1em;
+    padding-top: .1em;
+}
+
+/* WEATHER PAGE
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.weather {
+    padding: 4em 0 0;
+}
+
+.weather-info {
+    width: 35%;
+    margin: 2em auto;
+    background: #32457c;
+    padding: 2em;
+    border-radius: 5px;
+}
+
+.weather-grids {
+    float: left;
+    width: 33%;
+}
+
+.weather-grids.weather-mdl {
+    text-align: center;
+}
+
+.weather-grids:nth-child(3) {
+    text-align: right;
+}
+
+.weather-grids h3 {
+    font-size: 1.5em;
+    color: #fff;
+}
+
+.weather-grids h3.time {
+    font-weight: 900;
+    color: #FFD700;
+    margin-top: 0.7em;
+}
+
+.weather-grids h2 {
+    font-size: 3em;
+    font-weight: 300;
+    color: #fff;
+}
+
+.weather-grids h4 {
+    font-size: 1em;
+    color: #fff;
+}
+
+.clear {
+    clear: both;
+}
+
+.weather-bottom {
+    text-align: center;
+    margin-top: 2em;
+}
+
+.weather-bottom ul li {
+    display: inline-block;
+    padding: 1em 0;
+    float: left;
+    width: 14.1%;
+}
+
+.weather-bottom ul li.bg {
+    background: #314277;
+    margin-left: 28px;
+    margin-bottom: 22px;
+}
+
+.weather-bottom h4 {
+    font-size: 1em;
+    color: #fff;
+    font-weight: 100;
+}
+
+figure .icons {
+    margin: 0.5em 0;
+}
+
+.weather-bottom h5 {
+    font-size: 1.2em;
+    color: #fff;
+    font-weight: 600;
+}
+
+.weather-bottom h6 {
+    font-size: 1em;
+    color: #FFD700;
+    margin-top: 0.5em;
+}
+
