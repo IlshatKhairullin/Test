@@ -11,9 +11,58 @@ def main_page(request):
     return render(request, 'weather/main_page.html', {})
 
 
-def weather_now(request):
-    pass
+def get_weather(request):
+    data = None
+    location: str = request.GET.get('search')
+    print(request.GET)
+    if 'weather_now' in request.GET:
+        try:
+            r = requests.get(f'https://api.m3o.com/v1/weather/Now',
+                             headers={'Content-Type': 'application/json',
+                                      'Authorization': f'Bearer {open_weather_token}'},
+                             params={'location': location
+                                     })
+            data = r.json()
 
+        except Exception as ex:
+            print(ex)
+            print('Проверьте название города')
 
-def weather_forecast(request):
-    pass
+        return render(request, 'weather/weather_now.html', {'country': data['country'],
+                                                            'city': data['location'],
+                                                            'local_time': data['local_time'],
+                                                            'current_temp_c': data['temp_c'],
+                                                            'feels_like_temp_c': data['feels_like_c'],
+                                                            'humidity': data['humidity'],
+                                                            'wind_kph': data['wind_kph'],
+                                                            'wind_direction': data['wind_direction'],
+                                                            'icon_url': data['icon_url'],
+                                                            })
+
+    elif 'weather_forecast' in request.GET:
+        params = ('date', 'avg_temp_c', 'chance_of_rain', 'max_wind_kph', 'sunrise', 'sunset', 'icon_url')
+        context = {}
+        list_of_forecast = []
+
+        try:
+            r = requests.get(f'https://api.m3o.com/v1/weather/Forecast',
+                             headers={'Content-Type': 'application/json',
+                                      'Authorization': f'Bearer {open_weather_token}'},
+                             params={'location': location,
+                                     'days': 10
+                                     })
+            data = r.json()
+            context.update({'country': data['country'], 'city': data['location']})
+
+        except Exception as ex:
+            print(ex)
+            print('Проверьте название города')
+
+        for daily_data in data['forecast']:
+            params_dict = {}
+            for param in params:
+                params_dict[param] = daily_data[param]
+            list_of_forecast.append(params_dict)
+        context['forecast'] = list_of_forecast
+
+        return render(request, 'weather/weather_forecast.html', context)
