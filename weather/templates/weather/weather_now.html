@@ -1,0 +1,27 @@
+{% extends 'weather/base.html' %}
+
+{% block content %}
+    <div class="weather">
+        <h1>Weather today in {{ country }}, {{ city }}</h1>
+        <div class="weather-info">
+            <div class="weather-top">
+                <div class="weather-grids">
+                    <h3 class="time">{{ local_time }}</h3>
+                    <h4>humidity - {{ humidity }}%</h4>
+                    <h4>wind direction - {{ wind_direction }}</h4>
+                    <h4>wind speed - {{ wind_kph }} kph</h4>
+                </div>
+                {% if icon_url %}
+                    <div class="weather-grids weather-mdl">
+                        <img src="{{ icon_url }}" alt="condition_icon">
+                    </div>
+                {% endif %}
+                <div class="weather-grids">
+                    <h2>{{ current_temp_c }}°</h2>
+                    <h4>feels like {{ feels_like_temp_c }}°</h4>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'weather/base.html' %}
+
+{% block content %}
+    <div class="weather">
+        <h1>Weather forecast in {{ country }}, {{ city }} for 10 days</h1>
+        <div class="weather-info">
+            <div class="weather-bottom">
+                <ul>
+                    {% for day in forecast %}
+                        <li class="bg"><h4>{{ day.date }}</h4>
+                            <figure class="icons">
+                                <img src="{{ day.icon_url }}" alt="">
+                            </figure>
+                            <h5>{{ day.avg_temp_c }}°</h5>
+                            <h6>rain {{ day.chance_of_rain }}%</h6>
+                            <h6>max wind speed {{ day.max_wind_kph }} kph</h6>
+                            <h6>sunrise at {{ day.sunrise }}</h6>
+                            <h6>sunset at {{ day.sunset }}</h6>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
