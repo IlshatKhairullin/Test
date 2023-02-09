@@ -1,9 +1,7 @@
 import requests
 import os
-from dotenv import load_dotenv, find_dotenv
-from weather.enums import Weather
 
-load_dotenv(find_dotenv())
+from weather.enums import Weather
 
 
 def process_weather_now(location: str) -> dict:
