@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 
 
+# датакласс для хранения информации о погоде на данный момент
 @dataclass
 class WeatherNow:
     country: str
@@ -14,6 +15,7 @@ class WeatherNow:
     icon_url: str
 
 
+# датакласс для хранения информации о прогнозе погоды на 10 дней
 @dataclass
 class WeatherForecast:
     country: str
