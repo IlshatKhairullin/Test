@@ -2,43 +2,48 @@ import requests
 import os
 from dataclasses import asdict
 from django.http import HttpRequest
+from requests import Response
 
 from weather.enums import Weather
 from weather.dataclasses import WeatherNow, WeatherForecast
 
 
-def process_weather_now(location: str) -> dict:
-    """Возвращает данные о погоде на данный момент"""
+def send_request_weather_api(
+    open_api_url: str, location: str, days: int = 1
+) -> Response:
+    """Посылает запрос за данными на апи"""
+    response = None
+
     try:
-        r = requests.get(
-            f'{os.environ.get("OPEN_WEATHER_API_NOW")}',
+        response = requests.get(
+            f"{open_api_url}",
             headers={
                 "Content-Type": "application/json",
                 "Authorization": f'Bearer {os.environ.get("OPEN_WEATHER_TOKEN")}',
             },
-            params={"location": location},
+            params={"location": location, "days": {days}},
         )
     except Exception as ex:
         print(f"Ошибка при запросе на api {ex}")
+    return response
 
-    return r.json()
+
+def process_weather_now(location: str) -> dict:
+    """Возвращает данные о погоде на данный момент"""
+    response = send_request_weather_api(
+        open_api_url=os.environ.get("OPEN_WEATHER_API_NOW"), location=location
+    )
+    return response.json()
 
 
 def process_weather_forecast(location: str) -> dict:
     """Возвращает прогноз погоды на 10 дней вперед"""
-    try:
-        r = requests.get(
-            f'{os.environ.get("OPEN_WEATHER_API_FORECAST")}',
-            headers={
-                "Content-Type": "application/json",
-                "Authorization": f'Bearer {os.environ.get("OPEN_WEATHER_TOKEN")}',
-            },
-            params={"location": location, "days": 10},
-        )
-    except Exception as ex:
-        print(f"Ошибка при запросе на api {ex}")
-
-    return r.json()
+    response = send_request_weather_api(
+        open_api_url=os.environ.get("OPEN_WEATHER_API_FORECAST"),
+        location=location,
+        days=10,
+    )
+    return response.json()
 
 
 def fetch_weather_data(request: HttpRequest, weather_choice: Weather) -> dict:
