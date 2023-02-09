@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field
 
 
+# датакласс для хранения информации о погоде на данный момент
 @dataclass
 class WeatherNow:
     """Датакласс для хранения информации о погоде на данный момент"""
@@ -27,6 +28,7 @@ class WeatherNow:
         self.icon_url = data.get("icon_url")
 
 
+# датакласс для хранения информации о прогнозе погоды на 10 дней
 @dataclass
 class WeatherForecast:
     """Датакласс для хранения информации о прогнозе погоды на 10 дней"""
