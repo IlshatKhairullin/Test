@@ -1,5 +1,3 @@
-
-
 /* MAIN
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
@@ -32,16 +30,16 @@ h1 {
 
 }
 
-#searchBarWrap {
+#searchBarWrapNow {
     display: flex;
     justify-content: center;
 }
 
-#searchBarWrap {
+#searchBarWrapForecast {
+    margin-top: 50px;
     display: flex;
     justify-content: center;
 }
-
 
 #searchBar {
     border: .2em solid #BA4A00;

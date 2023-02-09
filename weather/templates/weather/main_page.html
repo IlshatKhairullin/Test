@@ -12,13 +12,22 @@
 
     <div class="main_page">
         <h1>Enter your location</h1>
-        <div id="searchBarWrap">
-            <form action="{% url 'get_weather' %}" method="get" class="search">
+        <div id="searchBarWrapNow">
+            <form action="{% url 'weather_now' %}" method="get" class="search">
                 <label>
                     <input id="searchBar" type="text" name="search" required="required" placeholder="Поиск..."
                            value="{{ search|default_if_none:'' }}">
                 </label>
                 <button id="searchBtn" name="weather_now"><i class="fa fa-search"></i>Weather now</button>
+            </form>
+        </div>
+
+        <div id="searchBarWrapForecast">
+            <form action="{% url 'weather_forecast' %}" method="get" class="search">
+                <label>
+                    <input id="searchBar" type="text" name="search" required="required" placeholder="Поиск..."
+                           value="{{ search|default_if_none:'' }}">
+                </label>
                 <button id="searchBtn" name="weather_forecast"><i class="fa fa-search"></i>Weather forecast</button>
             </form>
         </div>
