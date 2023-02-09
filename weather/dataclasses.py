@@ -3,6 +3,8 @@ from dataclasses import dataclass
 
 @dataclass
 class WeatherNow:
+    """Датакласс для хранения информации о погоде на данный момент"""
+
     country: str
     city: str
     local_time: str
@@ -16,6 +18,8 @@ class WeatherNow:
 
 @dataclass
 class WeatherForecast:
+    """Датакласс для хранения информации о прогнозе погоды на 10 дней"""
+
     country: str
     city: str
     forecast: list

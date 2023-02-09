@@ -1,12 +1,14 @@
 import requests
 import os
 from dataclasses import asdict
+from django.http import HttpRequest
 
 from weather.enums import Weather
 from weather.dataclasses import WeatherNow, WeatherForecast
 
 
 def process_weather_now(location: str) -> dict:
+    """Возвращает данные о погоде на данный момент"""
     try:
         r = requests.get(
             f'{os.environ.get("OPEN_WEATHER_API_NOW")}',
@@ -23,6 +25,7 @@ def process_weather_now(location: str) -> dict:
 
 
 def process_weather_forecast(location: str) -> dict:
+    """Возвращает прогноз погоды на 10 дней вперед"""
     try:
         r = requests.get(
             f'{os.environ.get("OPEN_WEATHER_API_FORECAST")}',
@@ -38,9 +41,8 @@ def process_weather_forecast(location: str) -> dict:
     return r.json()
 
 
-def fetch_weather_data(
-    request: requests.models.Response, weather_choice: Weather
-) -> dict:
+def fetch_weather_data(request: HttpRequest, weather_choice: Weather) -> dict:
+    """В зависимости от ручки парсит данные из словаря, заполняет датакласс и возвращает контекст"""
     context = {}
     location = request.GET.get("search")
 
