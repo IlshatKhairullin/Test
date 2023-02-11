@@ -1,19 +1,19 @@
 from dataclasses import dataclass, field
 
 
-@dataclass
+@dataclass(init=False)
 class WeatherNow:
     """Датакласс для хранения информации о погоде на данный момент"""
 
-    country: str = field(init=False)
-    city: str = field(init=False)
-    local_time: str = field(init=False)
-    current_temp_c: int = field(init=False)
-    feels_like_temp_c: int = field(init=False)
-    humidity: int = field(init=False)
-    wind_kph: float = field(init=False)
-    wind_direction: str = field(init=False)
-    icon_url: str = field(init=False)
+    country: str
+    city: str
+    local_time: str
+    current_temp_c: int
+    feels_like_temp_c: int
+    humidity: int
+    wind_kph: float
+    wind_direction: str
+    icon_url: str
 
     def fill_data(self, data: dict) -> None:
         self.country = data.get("country")
@@ -27,13 +27,13 @@ class WeatherNow:
         self.icon_url = data.get("icon_url")
 
 
-@dataclass
+@dataclass(init=False)
 class WeatherForecast:
     """Датакласс для хранения информации о прогнозе погоды на 10 дней"""
 
-    country: str = field(init=False)
-    city: str = field(init=False)
-    forecast: list = field(init=False)
+    country: str
+    city: str
+    forecast: list
 
     def fill_data(self, data: dict) -> None:
         self.country = data.get("country")
