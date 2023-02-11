@@ -4,6 +4,8 @@
 Для работы с проектом нужно установить [python](http://python.org) и 
 [poetry](https://python-poetry.org/)
 
+- Скопируйте .env.example в .env и заполните поля
+
 - `poetry shell` - вход в виртуальное окружение
 
 - `poetry install` - установка зависимостей
